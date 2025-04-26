@@ -132,7 +132,7 @@ export const AuthForm = () => {
         const res = await googleLogin(response.access_token); // Await API call
 
         if (res.success) {
-          toast.success("Signup successful!");
+          toast.success("Login successful!");
           login(res.data.token);
           navigate("/");
         } else {
