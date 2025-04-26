@@ -75,14 +75,12 @@ const LearnPointsStep = ({ formData, updateFormData }) => {
     option: (styles, { isFocused, isSelected }) => ({
       ...styles,
       backgroundColor: isSelected
-          ? 'hsl(var(--p))'
-          : isFocused
-              ? 'hsl(var(--p) / 0.1)'
-              : 'hsl(var(--b1))',
-      color: isSelected
-          ? 'hsl(var(--pc))'
-          : 'hsl(var(--bc))',
-    }),
+        ? "#4a90e2"
+        : isFocused
+        ? "#f0f0f0"
+        : "#ffffff",
+      color: isSelected ? "#ffffff" : "#333333",
+    }),
     menu: (styles) => ({
       ...styles,
       backgroundColor: 'hsl(var(--b1))',

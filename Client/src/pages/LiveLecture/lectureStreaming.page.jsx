@@ -191,7 +191,7 @@ const LectureStreaming = () => {
       setShowEndConfirmation(false);
       if(response.success){
         toast.success("Lecture completed successfully!");
-        navigate("/livelectures/section");
+        navigate("/livelecture/section");
       }else{
         toast.error("Failed to end lecture. Please try again.");
         setShowEndConfirmation(false);

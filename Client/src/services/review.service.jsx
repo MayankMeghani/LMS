@@ -14,7 +14,6 @@ export const createReview = async (reviewData, authToken) => {
 		return response.data.data;
 	} catch (error) {
 		console.error("Failed to create review:", error);
-		alert(`Failed to create review: ${error.response.data.message}`);
 		throw error;
 	}
 };
