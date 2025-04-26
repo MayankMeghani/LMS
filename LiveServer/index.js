@@ -113,6 +113,22 @@ io.on('connection', (socket) => {
     socket.to(roomId).emit('userTyping', { userId, isTyping });
   });
 
+  socket.on('endLecture', ({ roomId }) => {
+    const room = rooms.get(roomId);
+  
+    if (room) {
+      console.log(`Lecture ended for room ${roomId}`);
+      
+      // Notify all consumers that the lecture has ended
+      io.to(roomId).emit('lectureEnded', { message: 'Lecture has ended' });
+  
+      // Optionally clean up the room
+      rooms.delete(roomId);
+      console.log(`Room ${roomId} deleted after lecture ended`);
+    } else {
+      console.log(`Room ${roomId} not found when trying to end lecture`);
+    }
+  });
   
 
   socket.on('getRtpCapabilities', (callback) => {

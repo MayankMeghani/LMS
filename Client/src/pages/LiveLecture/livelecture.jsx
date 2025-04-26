@@ -3,8 +3,9 @@ import { Device } from 'mediasoup-client';
 import io from 'socket.io-client';
 import { getRoomToken } from '../../services/lecture.service';
 import { useAuth } from '@/context/AuthContext';
-import { useParams } from "react-router-dom";
 import { Loader2 } from 'lucide-react';
+import { toast } from "react-toastify";
+import { useParams, useNavigate } from "react-router-dom";
 import LectureChat from '../../components/LiveLecture/LectureChat.jsx';
 // Server URL from environment or fallback
 const SocketURL = import.meta.env.VITE_SOCKET_URL;
@@ -30,7 +31,7 @@ const LiveLecture = () => {
   // Hooks
   const { user, token } = useAuth();
   const { id } = useParams();
-
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -112,6 +113,16 @@ const LiveLecture = () => {
       setConnectionStatus('reconnecting');
       setError('Connection lost. Attempting to reconnect...');
       // Socket will attempt to reconnect automatically
+    });
+    socket.on('lectureEnded', () => {
+      console.log('Lecture has ended. Disconnecting...');
+  
+      toast.info('Lecture has ended.');
+  
+      socket.disconnect(); // disconnect the socket cleanly
+  
+      navigate('/livelecture/section'); // or wherever you want
+     
     });
 
     socket.on('connect_error', (err) => {
