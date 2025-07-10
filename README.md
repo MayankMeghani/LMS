@@ -6,7 +6,7 @@ A full-featured Learning Management System (LMS) that enables users to register,
 
 ## 🚀 Live Demo
 
-🌐 [http://LearnSpace.com](http://ec2-52-66-81-29.ap-south-1.compute.amazonaws.com)
+🌐 [http://LearnSpace.com](http://ec2-35-154-18-1.ap-south-1.compute.amazonaws.com)
 
 ---
 
